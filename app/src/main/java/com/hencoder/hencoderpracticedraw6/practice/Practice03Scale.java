@@ -14,6 +14,10 @@ public class Practice03Scale extends RelativeLayout {
     Button animateBt;
     ImageView imageView;
 
+
+    int scaleTotalCount = 4;
+    int scaleCount = 0;
+
     public Practice03Scale(Context context) {
         super(context);
     }
@@ -37,6 +41,26 @@ public class Practice03Scale extends RelativeLayout {
             @Override
             public void onClick(final View v) {
                 // TODO 在这里处理点击事件，通过 View.animate().scaleX/Y() 来让 View 放缩
+
+                switch (scaleCount) {
+                    case 0:
+                        imageView.animate().scaleX(1.5f);
+                        break;
+                    case 1:
+                        imageView.animate().scaleX(1);
+                        break;
+                    case 2:
+                        imageView.animate().scaleY(1.5f);
+                        break;
+                    case 3:
+                        imageView.animate().scaleY(1);
+                        break;
+                }
+
+                scaleCount++;
+                if (scaleCount == scaleTotalCount) {
+                    scaleCount = 0;
+                }
             }
         });
     }

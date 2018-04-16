@@ -22,6 +22,9 @@ public class Practice01Translation extends RelativeLayout {
     Button animateBt;
     ImageView imageView;
 
+    int translationTotalCount = SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 6 : 4;
+    int translationCount = 0;
+
     public Practice01Translation(Context context) {
         super(context);
     }
@@ -46,9 +49,36 @@ public class Practice01Translation extends RelativeLayout {
         }
 
         animateBt.setOnClickListener(new OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(final View v) {
                 // TODO 在这里处理点击事件，通过 View.animate().translationX/Y/Z() 来让 View 平移
+
+                switch (translationCount) {
+                    case 0:
+                        imageView.animate().translationX(100);
+                        break;
+                    case 1:
+                        imageView.animate().translationX(0);
+                        break;
+                    case 2:
+                        imageView.animate().translationY(100);
+                        break;
+                    case 3:
+                        imageView.animate().translationY(0);
+                        break;
+                    case 4:
+
+                        imageView.animate().translationZ(100);
+                        break;
+                    case 5:
+                        imageView.animate().translationZ(0);
+                        break;
+                }
+                translationCount++;
+                if (translationCount == translationTotalCount) {
+                    translationCount = 0;
+                }
             }
         });
     }

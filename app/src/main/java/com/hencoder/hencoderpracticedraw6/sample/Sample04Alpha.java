@@ -39,8 +39,8 @@ public class Sample04Alpha extends RelativeLayout {
             @Override
             public void onClick(final View v) {
                 switch (state) {
-                    case 0:
-                        imageView.animate().alpha(0);
+                    case 0:     imageView.animate().alpha(0);
+
                         break;
                     case 1:
                         imageView.animate().alpha(1);

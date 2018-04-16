@@ -9,10 +9,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.hencoder.hencoderpracticedraw6.R;
+import com.hencoder.hencoderpracticedraw6.Utils;
 
 public class Practice02Rotation extends RelativeLayout {
     Button animateBt;
     ImageView imageView;
+
+
+    int rotationTotalCount = 4;
+    int rotationCount = 0;
 
     public Practice02Rotation(Context context) {
         super(context);
@@ -37,6 +42,28 @@ public class Practice02Rotation extends RelativeLayout {
             @Override
             public void onClick(final View v) {
                 // // TODO 在这里处理点击事件，通过 View.animate().rotation/X/Y() 来让 View 旋转
+
+                switch (rotationCount) {
+                    case 0:
+                        imageView.animate().rotationX(180);
+                        break;
+                    case 1:
+                        imageView.animate().rotationX(0);
+                        break;
+                    case 2:
+                        imageView.animate().rotationY(180);
+                        break;
+                    case 3:
+                        imageView.animate().rotationY(0);
+                        break;
+                }
+
+                rotationCount++;
+
+                if (rotationCount == rotationTotalCount) {
+                    rotationCount = 0;
+                }
+
             }
         });
     }
